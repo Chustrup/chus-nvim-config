@@ -12,14 +12,14 @@ mason_lspconfig.setup({
 		"ast_grep",
 		"cmake",
 		"ast_grep",
-		"rome",
 		"ltex",
 		"grammarly",
 		"glsl_analyzer",
 		"lua_ls",
 		"ts_ls",
-		"pyright",
+		"basedpyright",
 		"clangd",
+		"neocmake",
 	},
 })
 
@@ -27,6 +27,7 @@ mason_null_ls.setup({
 	-- list of formatters & linters for mason to install
 	ensure_installed = {
 		-- "prettier", -- ts/js formatter
+		"gdtoolkit",
 		"stylua", -- lua formatter
 		"codelldb",
 	},

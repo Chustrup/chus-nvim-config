@@ -1,3 +1,3 @@
-require("tailwind-tools").setup({
-	-- your configuration
-})
+-- require("tailwind-tools").setup({
+-- 	-- your configuration
+-- })

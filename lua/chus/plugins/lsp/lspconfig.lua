@@ -3,6 +3,7 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local keymap = vim.keymap
 
 local on_attach = function(client, bufnr)
+	print("Attachedk w")
 	-- keybind options
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -26,6 +27,7 @@ local on_attach = function(client, bufnr)
 		keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
 		keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
 	end
+	capabilities.textDocument.completion.completionItem.snippetSupport = true
 end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -38,6 +40,7 @@ vim.lsp.config("html", {
 })
 
 -- configure typescript server with plugin
+vim.lsp.enable("ts_ls")
 vim.lsp.config("ts_ls", {
 	capabilities = capabilities,
 	on_attach = on_attach,
@@ -79,22 +82,32 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
+vim.lsp.enable("gdscript")
+vim.lsp.enable("glsl_analyzer")
+vim.lsp.enable("basedpyrightn")
+vim.lsp.enable("gdshader_lsp")
+vim.lsp.enable("neocmake")
+
 vim.lsp.config("gdscript", {
-
+	filetypes = { "gdscript" },
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
 
-vim.lsp.config("cmake", {
+vim.lsp.config("neocmake", {
 	capabilities = capabilities,
 	on_attach = on_attach,
-	filetypes = {
-		"cmake",
-		"CMakeLists.txt",
-	},
+	-- filetypes = {
+	-- 	"cmake",
+	-- },
 })
 
-vim.lsp.config("pyright", {
+vim.lsp.config("glsl_analyzer", {
+	capabilities = capabilities,
+	on_attach = on_attach,
+	file_markers = {},
+})
+vim.lsp.config("basedpyright", {
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
@@ -105,7 +118,7 @@ vim.lsp.config("clangd", {
 	filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "hpp" },
 })
 
-vim.lsp.config("eslint", {
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+-- vim.lsp.config("eslint", {
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })

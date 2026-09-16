@@ -33,7 +33,7 @@ require("telescope").setup({
 	},
 })
 local keymap = vim.keymap
-keymap.set("n", "<leader>fz", ":Telescope frecency<CR>")
+-- keymap.set("n", "<leader>fz", ":Telescope frecency<CR>")
 keymap.set("n", "<leader>fli", ":Telescope lsp_incoming_calls<CR>")
 keymap.set("n", "<leader>flo", ":Telescope lsp_outcoming_calls<CR>")
 keymap.set("n", "<leader>fld", ":Telescope diagnostics<CR>")

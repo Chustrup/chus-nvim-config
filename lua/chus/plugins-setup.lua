@@ -31,7 +31,7 @@ return require("packer").startup(function(use)
 
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
+		version = "*",
 		-- or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
@@ -56,6 +56,7 @@ return require("packer").startup(function(use)
 		"williamboman/mason.nvim",
 	})
 
+	use("neovim/nvim-lspconfig")
 	use("williamboman/mason-lspconfig.nvim")
 
 	use("hrsh7th/cmp-nvim-lsp")
@@ -63,6 +64,14 @@ return require("packer").startup(function(use)
 
 		"glepnir/lspsaga.nvim",
 		branch = "main",
+	})
+
+	use({
+		"akinsho/git-conflict.nvim",
+		tag = "*",
+		config = function()
+			require("git-conflict").setup()
+		end,
 	})
 
 	use("jose-elias-alvarez/typescript.nvim")
@@ -79,13 +88,13 @@ return require("packer").startup(function(use)
 	use("mfussenegger/nvim-lint")
 	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = function()
-			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-			ts_update()
-		end,
-	})
+	-- use({
+	-- 	"nvim-treesitter/nvim-treesitter",
+	-- 	run = function()
+	-- 		local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+	-- 		ts_update()
+	-- 	end,
+	-- })
 
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
@@ -93,7 +102,6 @@ return require("packer").startup(function(use)
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 	use("windwp/nvim-ts-autotag")
 	use({
-		"williamboman/mason.nvim",
 		"mfussenegger/nvim-dap",
 	})
 	use("mfussenegger/nvim-dap-python")
@@ -108,24 +116,24 @@ return require("packer").startup(function(use)
 	use("esmuellert/nvim-eslint")
 
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
-	use({
-		"luckasranarison/tailwind-tools.nvim",
-		requires = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-telescope/telescope.nvim", -- optional
-			"neovim/nvim-lspconfig", -- optional
-		},
-	})
+	-- use({
+	-- 	"luckasranarison/tailwind-tools.nvim",
+	-- 	requires = {
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 		"nvim-telescope/telescope.nvim", -- optional
+	-- 		"neovim/nvim-lspconfig", -- optional
+	-- 	},
+	-- })
 	use("Civitasv/cmake-tools.nvim")
 	use("lewis6991/hover.nvim")
-	use({
-		"nvim-telescope/telescope-frecency.nvim",
-		-- install any compatible version of 0.9.x
-		version = "^0.9.0",
-		config = function()
-			require("telescope").load_extension("frecency")
-		end,
-	})
+	-- use({
+	-- 	"nvim-telescope/telescope-frecency.nvim",
+	-- 	-- install any compatible version of 0.9.x
+	-- 	version = "^0.9.0",
+	-- 	config = function()
+	-- 		require("telescope").load_extension("frecency")
+	-- 	end,
+	-- })
 
 	use("easymotion/vim-easymotion")
 	use("karb94/neoscroll.nvim")
